@@ -93,7 +93,7 @@ if __name__ == "__main__":
     else:
         fds, labels = get_feat_labels()
 
-    X_train, X_test, y_train, y_test = train_test_split(fds, labels, test_size=0.5)
+    X_train, X_test, y_train, y_test = train_test_split(fds, labels, test_size=0.2)
 
     if not os.path.exists(adb_model_path):
         train(X_train, y_train)

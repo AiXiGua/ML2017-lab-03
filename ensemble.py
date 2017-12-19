@@ -64,7 +64,7 @@ class AdaBoostClassifier:
         Returns:
             An one-dimension ndarray indicating the scores of differnt samples, which shape should be (n_samples,1).
         '''
-        prob_sum = - np.ones(self.y.shape)
+        prob_sum = - np.ones(len(X_test))
         for i in range(self.quality_estimators + 1):
             prob_sum += self.estimators[i].predict_proba(X_test)[:, 1].flatten() * self.alpha[i]
         return prob_sum
@@ -80,7 +80,7 @@ class AdaBoostClassifier:
         Returns:
             An ndarray consists of predicted labels, which shape should be (n_samples,1).
         '''
-        prob_sum = - np.ones(self.y.shape)
+        prob_sum = - np.ones(len(X_test))
         for i in range(self.quality_estimators + 1):
             prob_sum += self.estimators[i].predict_proba(X_test)[:, 1].flatten() * self.alpha[i]
         pre_y = np.sign(prob_sum)
